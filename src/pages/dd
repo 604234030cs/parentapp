@@ -1,0 +1,30 @@
+<ion-card>
+  <ion-card-header>
+    <ion-item>
+      <ion-label>โหมดการรับบุตร</ion-label>
+      <ion-toggle [(ngModel)]="edit" disabled="false" color="primary" (ngModelChange)="openMode()"></ion-toggle>
+  </ion-item>
+  </ion-card-header>
+</ion-card>
+
+const confirm = this.alertCtrl.create({
+    title: 'คุณต้องเปิดโหมดรับบุตรหรือไม่',
+    buttons:[{
+        text: 'ตกลง',
+        handler: () =>{
+
+        }
+      },
+        {
+          text: 'ยกเลิก',
+          handler: () =>{
+            if(this.edit==false){
+              this.edit=true;
+            }else{
+              this.edit=false;
+            }
+          }
+        }
+    ]
+  });
+confirm.present();
