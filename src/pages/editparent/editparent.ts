@@ -52,7 +52,7 @@ export class EditparentPage {
   }
 
   editAccount() {
-    let url = Enums.APIURL.URL + '/todoslim3/public/index.php/editparent/' + this.parent.par_id + '&&' + this.parent.par_title + '&&' + this.parent.par_name + '&&' + this.parent.par_sname + '&&' + this.parent.par_tel;
+    let url = Enums.APIURL.URL + '/todoslim3/public/index.php/editparent22/' + this.parent.par_id + '&&' + this.parent.par_title + '&&' + this.parent.par_name + '&&' + this.parent.par_sname + '&&' + this.parent.par_tel;
     this.http.get(url).subscribe(data => {
       this.accout = data;
       if (data != false) {
