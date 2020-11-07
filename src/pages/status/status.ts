@@ -28,10 +28,31 @@ export class StatusPage {
   latitude: any = [];
   longitude: any = [];
   interval: number;
+  status;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController,
     public http: HttpClient, public alertCtrl: AlertController, private Storage: Storage, private geolocation: Geolocation) {
     this.loaddata();
+    Storage.ready().then(()=>{
+      Storage.get('edit').then((val)=>{
+        this.edit = val;
+        console.log(val);
+
+        if(val==true){
+
+
+          this.status="กำลังเปิดสถานะ"
+        }
+        else if (val==false){
+
+
+          this.status=null
+        }
+        else{
+
+        }
+      })
+    });
   }
 
   ionViewDidLoad() {
@@ -57,6 +78,7 @@ export class StatusPage {
         buttons: [{
           text: 'ตกลง',
           handler: () => {
+            this.status = "กำลังเปิดสถานะ"
             this.interval = setInterval(() => {
               this.geolocation.getCurrentPosition().then((resp) => {
                 resp.coords.latitude
@@ -94,6 +116,7 @@ export class StatusPage {
         buttons: [{
           text: 'ตกลง',
           handler: () => {
+            this.status = null
             clearInterval(this.interval);
             setTimeout(() => {
               let url = Enums.APIURL.URL + '/todoslim3/public/index.php/editparentlatlongNull/' + this.parent.par_id + '&&' + this.latitudeNull + '&&' + this.longitudeNull;
@@ -121,6 +144,7 @@ export class StatusPage {
 
 
     }
+    this.Storage.set('edit', this.edit);
   }
 
   //end

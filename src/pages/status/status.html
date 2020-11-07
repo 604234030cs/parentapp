@@ -18,10 +18,13 @@
   <ion-card>
     <ion-card-header>
       <ion-item>
-        <ion-label color="pink">โหมดการรับบุตร</ion-label>
-        <ion-toggle [(ngModel)]="edit" color="primary" (ngModelChange)="mode()"></ion-toggle>
+        <ion-label color="dark">โหมดการรับบุตร</ion-label>
+        <ion-toggle   [(ngModel)]="edit" color="primary" (ngModelChange)="mode($event)"></ion-toggle>
     </ion-item>
     </ion-card-header>
   </ion-card>
+  <br>
+  <br>
+  <h1 text-center style="color: chartreuse;">{{status}}</h1>
 
 </ion-content>
